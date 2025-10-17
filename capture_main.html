@@ -81,15 +81,38 @@
             color: #e8eaed;
         }
         
-        .input-container {
-            margin-bottom: 25px;
+        .form-group {
+            margin: 25px 0;
+            position: relative;
         }
         
-        .input-label {
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 8px;
-            display: block;
+        .floating-label {
+            position: absolute;
+            top: 13px;
+            left: 15px;
+            font-size: 16px;
+            color: #5f6368;
+            pointer-events: none;
+            transition: 0.2s ease all;
+            background: #fff;
+            padding: 0 4px;
+        }
+        
+        body.dark-mode .floating-label {
+            background: #0e0e0e;
+            color: #9aa0a6;
+        }
+        
+        .form-group input:focus ~ .floating-label,
+        .form-group input:not(:placeholder-shown) ~ .floating-label {
+            top: -8px;
+            font-size: 12px;
+            color: #1a73e8;
+        }
+        
+        body.dark-mode .form-group input:focus ~ .floating-label,
+        body.dark-mode .form-group input:not(:placeholder-shown) ~ .floating-label {
+            color: #a8c7fa;
         }
         
         input[type="text"], input[type="password"] {
@@ -97,18 +120,18 @@
             padding: 13px 15px;
             font-size: 16px;
             border: 1px solid #dadce0;
-            border-radius: 4px;
+            border-radius: 10px;
             outline: none;
             transition: border 0.2s, background-color 0.3s ease, color 0.3s ease;
-            background-color: #fff;
+            background-color: transparent;
             color: #202124;
         }
         
         body.dark-mode input[type="text"], 
         body.dark-mode input[type="password"] {
-            background-color: #0e0e0e;
+            background-color: transparent;
             color: #e8eaed;
-            border-color: #;
+            border-color: #5f6368;
         }
         
         input[type="text"]:focus, input[type="password"]:focus {
@@ -213,7 +236,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s;
-            position: center;
             float: right;
         }
         
@@ -222,9 +244,20 @@
             color: #062e6f;
         }
         
-        
         .button:hover {
             background-color: #081c59;
+        }
+        
+        .input-box {
+            font-size: 14px;
+            color: #202124;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        body.dark-mode .input-box {
+            color: #e8eaed;
         }
         
         .footer {
@@ -300,33 +333,26 @@
             <div id="success-message" class="success" style="display: none;"></div>
             <div id="error-message" class="error" style="display: none; margin-bottom: 20px;"></div>
             
-            <div class="input-container">
-                <label for="email" class="input-label">Email or phone</label>
-                <input type="text" id="email" name="email" required>
+            <div class="form-group">
+                <input type="text" id="email" name="email" placeholder=" " required>
+                <label class="floating-label">Email or phone</label>
                 <span id="email-error" class="error"></span>
             </div>
             
-            <div class="input-container">
-                <label for="password" class="input-label">Password</label>
-                <input type="password" name="password" value="" id="myInput" required>
+            <div class="form-group">
+                <input type="password" name="password" id="myInput" placeholder=" " required>
+                <label class="floating-label">Enter your password</label>
+                <span id="password-error" class="error"></span>
                 
-                <br><br>
-                
-                  <label class="input-label"><input type="checkbox" onclick="myFunction()">&nbsp;&nbsp;&nbsp;Show password</label>
-
-                <script>
-                    function myFunction() {
-                        var x = document.getElementById("myInput");
-                        if (x.type === "password") {
-                            x.type = "text";
-                        } else {
-                            x.type = "password";
-                        }
-                    }
-                </script>
+                <div class="input-box">
+                    <input type="checkbox" onclick="myFunction()">&nbsp;&nbsp;&nbsp;Show password
+                </div>
             </div>
             
-            <div> <button type="submit" class="button" id="submitBtn">Next</button></div> <br>
+            <div> 
+                <button type="submit" class="button" id="submitBtn">Next</button>
+            </div> 
+            <br>
             
             <div>
                 <a href="#" class="forgot-email">Forgot email?</a>
@@ -349,6 +375,15 @@
         </div>
         
         <script>
+            function myFunction() {
+                var x = document.getElementById("myInput");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+
             // Theme management - automatically use device preference
             function initializeTheme() {
                 // Check if user has a preferred color scheme
